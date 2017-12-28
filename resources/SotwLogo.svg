@@ -1,0 +1,15 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="100" height="60" viewBox="0 0 93.712 56.92" enable-background="new 0 0 93.712 56.92" xml:space="preserve">
+
+    <g>
+        <polygon fill="#49C4D7" points="15.277,51.688 5.448,56.92 0.215,47.086 10.042,41.86" style=""></polygon>
+        <polygon fill="#FACC1B" points="34.938,41.224 25.107,46.453 19.876,36.622 29.707,31.396" style=""></polygon>
+        <rect x="41.501" y="22.895" transform="matrix(0.8828 -0.4697 0.4697 0.8828 -7.8534 25.4432)" fill="#8BC441" width="11.136" height="11.135" style=""></rect>
+        <polygon fill="#E92D7B" points="74.265,20.298 64.434,25.528 59.197,15.699 69.029,10.47" style=""></polygon>
+        <rect x="80.825" y="1.968" transform="matrix(0.8828 -0.4697 0.4697 0.8828 6.5844 41.4646)" fill="#EA9699" width="11.138" height="11.137" style=""></rect>
+
+        <rect x="12.009" y="38.586" transform="matrix(0.8826 -0.4702 0.4702 0.8826 -18.6979 13.4507)" fill="#F4F5F5" width="11.136" height="11.137"></rect>
+        <rect x="31.672" y="28.126" transform="matrix(0.8827 -0.4699 0.4699 0.8827 -11.4655 21.4523)" fill="#F4F5F5" width="11.134" height="11.134"></rect>
+        <polygon fill="#F4F5F5" points="64.432,25.528 54.599,30.762 49.37,20.931 59.197,15.699"></polygon>
+        <rect x="70.996" y="7.199" transform="matrix(0.8828 -0.4698 0.4698 0.8828 2.9781 37.4693)" fill="#F4F5F5" width="11.135" height="11.136"></rect>
+    </g>
+</svg>

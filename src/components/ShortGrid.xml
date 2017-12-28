@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ShortGrid" extends="Scene" initialFocus="RowList"> 
+  <interface>
+		<field id="postJson" type="string" />
+	</interface>
+  <children>
+    <Label id="myLabel" 
+      text="Eric's Label"
+      width="1920" 
+      height="65" 
+      horizAlign="center"
+      translation="[0,48]"
+      />
+    <SimpleRowList id="theRowList" translation="[0,96]" />
+    <Label id="lblVideo" 
+      text="Current Video"
+      width="1800" 
+      height="65" 
+      horizAlign="left"
+      translation="[48,400]"
+      />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/ShortGrid.brs" />
+</component>
