@@ -14,6 +14,7 @@ sub Main()
     
     'Create a scene and load /components/ShortGrid.xml'
     scene = screen.CreateScene("ShortGrid")
+    scene.backgroundColor="0x152426FF"
     scene.postJson = ApiLoad()
     screen.show()
     

@@ -4,21 +4,43 @@
 		<field id="postJson" type="string" />
 	</interface>
   <children>
-    <Label id="myLabel" 
-      text="Eric's Label"
-      width="1920" 
-      height="65" 
-      horizAlign="center"
-      translation="[0,48]"
-      />
-    <SimpleRowList id="theRowList" translation="[0,96]" />
-    <Label id="lblVideo" 
-      text="Current Video"
-      width="1800" 
-      height="65" 
-      horizAlign="left"
-      translation="[48,400]"
-      />
+    <Group>
+      <Rectangle translation="[0,0]" width="1920" height="1080" color="0x0B1213FF" />
+      <Poster id="posSelected" translation="[920,-50]" 
+        width="960" height="540" 
+        loadDisplayMode="scaleToZoom" />
+      <Poster translation="[920,-50]"
+        width="360" height="540"
+        loadDisplayMode="scaleToFill"
+        uri="pkg:/images/gradientHoriz.png" />
+      <Poster translation="[920,310]"
+        width="960" height="180"
+        loadDisplayMode="scaleToFill"
+        uri="pkg:/images/gradientVert.png" />
+      <LayoutGroup layoutDirection="vert" vertAlignment="top" itemSpacings="30" translation="[200,70]" >
+        <LayoutGroup layoutDirection="horiz" vertAlignment="top" itemSpacings="30" translation="[200,70]" >
+          <Label id="lblSubTitle" horizAlign="left" translation="[0,0]" 
+            font="font:SmallestSystemFont" />
+          <Rectangle
+            id="lblMature"
+            color="0xFF0055FF"
+            width="60"
+            height="30"
+            visible="false"
+            translation="[0,0]">
+            <Label horizAlign="center" color="0xFFFFFFFF" vertAlign="center" 
+              width="60"
+              height="30"
+              font="font:SmallestBoldSystemFont" text="MA" />
+          </Rectangle>
+        </LayoutGroup>
+        <Label id="lblTitle" horizAlign="left" translation="[0,0]" font="font:LargeSystemFont" 
+          width="900" wrap="true" maxLines="2" />
+        <Label id="lblExcerpt" horizAlign="left" translation="[0,0]" font="font:SmallestSystemFont" 
+          width="900" wrap="true" maxLines="3" />
+      </LayoutGroup>
+      <SimpleRowList id="theRowList" translation="[0,400]" />
+    </Group>
   </children>
   <script type="text/brightscript" uri="pkg:/components/ShortGrid.brs" />
 </component>

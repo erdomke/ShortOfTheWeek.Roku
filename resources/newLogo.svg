@@ -165,7 +165,10 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
-       id="g1638">
+       id="g1638"
+       inkscape:export-filename="C:\Users\eric.domke\Documents\Code\SotwRokuChannel\short-of-the-week\src\images\splash-screen_fhd.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          d="m -606.04172,-126.68142 h 507.999996 v 285.75 H -606.04172 Z"
          style="fill:#152426;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
@@ -247,7 +250,10 @@
     <g
        transform="matrix(0.66666667,0,0,0.66666667,-200.6298,263.27012)"
        id="g1638-3"
-       style="stroke-width:1.5">
+       style="stroke-width:1.5"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="C:\Users\eric.domke\Documents\Code\SotwRokuChannel\short-of-the-week\src\images\splash-screen_hd.png">
       <path
          d="m -606.04172,-126.68142 h 507.999996 v 285.75 H -606.04172 Z"
          style="fill:#152426;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.52916664"
@@ -328,7 +334,10 @@
     </g>
     <g
        id="g1774"
-       transform="translate(4.2763124,-73.766389)">
+       transform="translate(4.2763124,-73.766389)"
+       inkscape:export-filename="C:\Users\eric.domke\Documents\Code\SotwRokuChannel\short-of-the-week\src\images\splash-screen_sd.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          d="m -607.65536,467.30577 h 190.5 v 127 h -190.5 z"
          style="fill:#152426;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
@@ -409,7 +418,10 @@
     </g>
     <g
        id="g2015"
-       transform="translate(-833.05953,83.154762)">
+       transform="translate(-833.05953,83.154762)"
+       inkscape:export-filename="C:\Users\eric.domke\Documents\Code\SotwRokuChannel\short-of-the-week\src\images\channel-poster_fhd.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          d="M -0.5502637,-124.65881 H 142.32473 V -17.50256 H -0.5502637 Z"
          style="fill:#152426;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
@@ -509,7 +521,10 @@
     <g
        transform="matrix(0.53703706,0,0,0.53827161,-833.64236,143.81213)"
        id="g2015-5"
-       style="stroke-width:1.8599323">
+       style="stroke-width:1.8599323"
+       inkscape:export-filename="C:\Users\eric.domke\Documents\Code\SotwRokuChannel\short-of-the-week\src\images\channel-poster_hd.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          d="M -0.5502637,-124.65881 H 142.32473 V -17.50256 H -0.5502637 Z"
          style="fill:#152426;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.65614271"
@@ -608,7 +623,10 @@
     </g>
     <g
        id="g2175"
-       transform="translate(-833.05953,63.122024)">
+       transform="translate(-833.05953,63.122024)"
+       inkscape:export-filename="C:\Users\eric.domke\Documents\Code\SotwRokuChannel\short-of-the-week\src\images\channel-poster_sd.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          d="M -0.56696486,79.47469 H 56.053868 v 38.1 H -0.56696486 Z"
          style="fill:#152426;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"

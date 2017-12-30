@@ -13,11 +13,11 @@
 	    m.top.numRows = 1
 	    m.top.itemSize = [1920, 365]
 	    m.top.rowHeights = [335]
-	    m.top.rowItemSize = [ [480, 335] ]
+	    m.top.rowItemSize = [ [480, 270] ]
 	    m.top.itemSpacing = [ 0, 80 ]
 	    m.top.rowItemSpacing = [ [20, 0] ]
-		m.top.focusXOffset = [ 47 ]
-		m.top.rowLabelOffset = [ [47, 30] ]
+		m.top.focusXOffset = [ 200 ]
+		m.top.rowLabelOffset = [ [200, 30] ]
 	    m.top.rowFocusAnimationStyle = "fixedFocusWrap"
 		m.top.showRowLabel = [true]
 		m.top.showRowCounter = [true]

@@ -6,7 +6,14 @@
  
 <interface> 
   <field id="labelText" type="string" />
-  <field id="posterUrl" type="string" />
+  <field id="thumbnailUrl" type="string" />
+  <field id="fullImgUrl" type="string" />
+  <field id="excerpt" type="string" />
+  <field id="duration" type="string" />
+  <field id="date" type="string" />
+  <field id="genre" type="string" />
+  <field id="filmmaker" type="string" />
+  <field id="mature" type="boolean" />
 </interface>
 
 </component>
