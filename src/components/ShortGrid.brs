@@ -16,6 +16,7 @@ function init()
   m.screenWidth = CreateObject("roDeviceInfo").GetDisplaySize().w
 
   m.firstPageLoaded = false
+  m.firstFocus = false
   m.rowData = {}
   m.state = "list"
   m.selectedItem = {}
@@ -112,6 +113,8 @@ sub onJsonChanged()
       end if
     end if
   end for
+
+  if m.firstFocus then onRowItemFocused()
 end sub
 
 Function IsArray(value As Dynamic) As Boolean
@@ -141,6 +144,7 @@ Function IsWhitespace(asc as integer) as Boolean
 end function
 
 function onRowItemFocused() as void
+  m.firstFocus = true
   row = m.rowList.rowItemFocused[0]
   col = m.rowList.rowItemFocused[1]
 
@@ -151,7 +155,7 @@ function onRowItemFocused() as void
   excerpt = m.top.findNode("lblExcerpt")
 
   title = m.top.findNode("lblTitle")
-  title.text = item.labelText
+  title.text = UCase(item.labelText)
   if title.boundingRect()["height"] < 60 then
     excerpt.maxLines = 4
   end if
@@ -159,7 +163,9 @@ function onRowItemFocused() as void
   m.top.findNode("lblMature").visible = item.mature
 
   poster = m.top.findNode("posSelected")
-  poster.loadingBitmapUri = item.thumbnailUrl
+  if item.thumbnailUrl <> item.fullImgUrl then
+    poster.loadingBitmapUri = item.thumbnailUrl
+  end if
   poster.uri = item.fullImgUrl
 end function
 
@@ -196,19 +202,20 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
 end function
 
 sub setState(newState as string)
+  txtContent = m.top.findNode("txtContent")
+  lblExcerpt = m.top.findNode("lblExcerpt")
+  lblTitle = m.top.findNode("lblTitle")
+
   m.rowList.visible = (newState = "list")
   m.btnWatch.visible = (newState = "detail")
-  'm.top.findNode("lblSubTitle").wrap = (newState = "detail")
 
   if newState = "detail" then
-    m.top.findNode("lblExcerpt").maxLines = 6
     item = m.selectedItem
-    'str = item.genre + " about " + item.topic + " in " + item.style + chr(13) + chr(10)
-    'str = str + "Directed by " + item.filmmaker + " in " + item.country + chr(13) + chr(10)
-    'str = str + item.duration + " minutes"
-    'm.top.findNode("lblSubTitle").text = str
+    lblExcerpt.maxLines = 6
+
     m.btnWatch.setFocus(true)
   else if newState = "list" then
+
     m.rowList.setFocus(true)
   end if
   m.state = newState

@@ -6,21 +6,22 @@
   <children>
     <Group>
       <Rectangle translation="[0,0]" width="1920" height="1080" color="0x0B1213FF" />
-      <Poster id="posSelected" translation="[920,-50]"
+      <Poster id="posSelected" translation="[920,0]"
         width="960" height="540"
         loadDisplayMode="scaleToZoom" />
-      <Poster translation="[920,-50]"
+      <Poster translation="[920,0]"
         width="360" height="540"
         loadDisplayMode="scaleToFill"
         uri="pkg:/images/gradientHoriz.png" />
-      <Poster translation="[920,310]"
+      <Poster translation="[920,360]"
         width="960" height="180"
         loadDisplayMode="scaleToFill"
         uri="pkg:/images/gradientVert.png" />
-      <LayoutGroup layoutDirection="vert" vertAlignment="top" itemSpacings="30" translation="[120,70]" >
+      <LayoutGroup layoutDirection="vert" vertAlignment="top" itemSpacings="18" translation="[120,70]" >
         <LayoutGroup layoutDirection="horiz" vertAlignment="top" itemSpacings="30" translation="[120,70]" >
-          <Label id="lblSubTitle" horizAlign="left" translation="[0,0]"
-            font="font:SmallestSystemFont" />
+          <Label id="lblSubTitle" horizAlign="left" translation="[0,0]">
+            <Font role = "font" uri = "pkg:/fonts/Slant.otf" size = "40" />
+          </Label>
           <Rectangle
             id="lblMature"
             color="0xFF0055FF"
@@ -34,13 +35,15 @@
               font="font:SmallestBoldSystemFont" text="MA" />
           </Rectangle>
         </LayoutGroup>
-        <Label id="lblTitle" horizAlign="left" translation="[0,0]" font="font:LargeSystemFont"
-          width="900" wrap="true" maxLines="2" />
+        <Label id="lblTitle" horizAlign="left" translation="[0,0]"
+          width="900" wrap="true" maxLines="2">
+          <Font role = "font" uri = "pkg:/fonts/Futura.ttf" size = "56" />
+        </Label>
         <Label id="lblExcerpt" horizAlign="left" translation="[0,0]" font="font:SmallestSystemFont"
           width="900" wrap="true" maxLines="3" />
         <Button id="btnWatch" text="Watch on Vimeo" visible="false" iconUri=""/>
       </LayoutGroup>
-      <SimpleRowList id="theRowList" translation="[0,400]" />
+      <SimpleRowList id="theRowList" translation="[0,500]" />
     </Group>
   </children>
   <script type="text/brightscript" uri="pkg:/components/ShortGrid.brs" />
