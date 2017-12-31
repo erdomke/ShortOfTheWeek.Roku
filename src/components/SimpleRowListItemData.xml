@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
 
- 
+
 <component name="SimpleRowListItemData" extends="ContentNode">
- 
-<interface> 
+
+<interface>
   <field id="labelText" type="string" />
   <field id="thumbnailUrl" type="string" />
   <field id="fullImgUrl" type="string" />
   <field id="excerpt" type="string" />
   <field id="duration" type="string" />
   <field id="date" type="string" />
-  <field id="genre" type="string" />
   <field id="filmmaker" type="string" />
   <field id="mature" type="boolean" />
+  <field id="genre" type="string" />
+  <field id="topic" type="string" />
+  <field id="style" type="string" />
+  <field id="country" type="string" />
+  <field id="vimeoId" type="string" />
 </interface>
 
 </component>
