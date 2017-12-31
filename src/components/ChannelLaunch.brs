@@ -11,8 +11,34 @@
 ' Description: sets the execution function for the UriFetcher
 ' 						 and tells the UriFetcher to run
 sub init()
+  ' create the message port
+  m.port = createObject("roMessagePort")
+
   ' setting callbacks for url request and response
-  m.top.observeField("vimeoId", "LaunchVimeo")
+  m.top.observeField("vimeoId", m.port)
+
+  ' setting the task thread function
+  m.top.functionName = "go"
+  m.top.control = "RUN"
+end sub
+
+sub go()
+	'Event loop
+  while true
+    msg = wait(0, m.port)
+    mt = type(msg)
+    print "Received event type '"; mt; "'"
+    ' If a request was made
+    if mt = "roSGNodeEvent"
+      if msg.getField()="vimeoId"
+        LaunchVimeo()
+      else
+        print "Error: unrecognized field '"; msg.getField() ; "'"
+      end if
+    else
+	   print "Error: unrecognized event type '"; mt ; "'"
+    end if
+  end while
 end sub
 
 Sub LaunchVimeo()
@@ -20,6 +46,8 @@ Sub LaunchVimeo()
   ipDict = CreateObject("roDeviceInfo").GetIPAddrs()
   ipAddr = ipDict[ipDict.Keys()[0]]
   request = CreateObject("roUrlTransfer")
-  request.SetUrl("http://" + ipAddr + "/launch/1980?contentid=" + vimeoId)
+  url = "http://" + ipAddr + ":8060/launch/1980?contentid=" + vimeoId
+  print "Launching URL " + url
+  request.SetUrl(url)
   request.PostFromString("")
 End Sub
