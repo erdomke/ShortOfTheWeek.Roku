@@ -16,6 +16,7 @@ sub init()
 
   ' setting callbacks for url request and response
   m.top.observeField("vimeoId", m.port)
+  m.top.observeField("youTubeId", m.port)
 
   ' setting the task thread function
   m.top.functionName = "go"
@@ -31,7 +32,9 @@ sub go()
     ' If a request was made
     if mt = "roSGNodeEvent"
       if msg.getField()="vimeoId"
-        LaunchVimeo()
+        Launch("1980", m.top.vimeoId)
+      elseif msg.getField()="youTubeId"
+        Launch("837", m.top.youTubeId)
       else
         print "Error: unrecognized field '"; msg.getField() ; "'"
       end if
@@ -41,12 +44,11 @@ sub go()
   end while
 end sub
 
-Sub LaunchVimeo()
-  vimeoId = m.top.vimeoId
+Sub Launch(service as string, contentid as string)
   ipDict = CreateObject("roDeviceInfo").GetIPAddrs()
   ipAddr = ipDict[ipDict.Keys()[0]]
   request = CreateObject("roUrlTransfer")
-  url = "http://" + ipAddr + ":8060/launch/1980?contentid=" + vimeoId
+  url = "http://" + ipAddr + ":8060/launch/" + service + "?contentid=" + contentid
   print "Launching URL " + url
   request.SetUrl(url)
   request.PostFromString("")

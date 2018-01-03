@@ -17,7 +17,9 @@
   <field id="topic" type="string" />
   <field id="style" type="string" />
   <field id="country" type="string" />
-  <field id="vimeoId" type="string" />
+  <field id="contentId" type="string" />
+  <field id="service" type="string" />
+  <field id="categories" type="string" />
 </interface>
 
 </component>

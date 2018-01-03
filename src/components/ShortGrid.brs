@@ -59,57 +59,73 @@ sub onJsonChanged()
   for i = 0 to posts.Count() - 1
     post = posts[i]
     if post.type = "video" then
-      item = m.rowData.newest.CreateChild("SimpleRowListItemData")
-      item.thumbnailUrl = "https:" + post.thumbnail
-      if m.screenWidth > 1300 and len(post.background_image) > 0 then
-        item.fullImgUrl = "https:" + post.background_image
+      host = post.play_link.Replace("https://", "").Replace("http://", "")
+      if left(host, 17) = "player.vimeo.com/" then
+        service = "Vimeo"
+      elseif left(host, 16) = "www.youtube.com/" then
+        service = "YouTube"
       else
-        item.fullImgUrl = "https:" + post.thumbnail
+        service = ""
       end if
-      item.labelText = post.post_title
-      item.duration = post.duration
-      item.excerpt = post.post_excerpt
-      item.mature = IsArray(post.labels)
-      item.genre = post.genre.display_name
-      item.topic = post.topic.display_name
-      item.style = post.style.display_name
-      item.country = post.country.display_name
-      if left(post.play_link, 25) = "https://player.vimeo.com/" then
+
+      if service <> "" then
+        item = m.rowData.newest.CreateChild("SimpleRowListItemData")
+        item.thumbnailUrl = "https:" + post.thumbnail
+        if m.screenWidth > 1300 and len(post.background_image) > 0 then
+          item.fullImgUrl = "https:" + post.background_image
+        else
+          item.fullImgUrl = "https:" + post.thumbnail
+        end if
+        item.labelText = post.post_title
+        item.duration = post.duration
+        item.excerpt = post.post_excerpt
+        item.mature = IsArray(post.labels)
+        item.genre = post.genre.display_name
+        item.topic = post.topic.display_name
+        item.style = post.style.display_name
+        item.country = post.country.display_name
+
         urlParts = post.play_link.split("/")
-        item.vimeoId = urlParts[urlParts.Count() - 1]
-      else
-        item.vimeoId = ""
-      end if
+        item.contentId = urlParts[urlParts.Count() - 1]
+        item.service = service
 
-      makers = post.filmmaker.split(" &amp; ")
-      if makers.Count() = 1 then
-        item.filmmaker = makers[0]
-      elseif makers.Count() = 2 then
-        item.filmmaker = Trim(makers[0]) + " & " + Trim(makers[1])
-      else
-        item.filmmaker = Trim(makers[0]) + " & " + (makers.Count() - 1).toStr() + " Others"
-      end if
-      date = CreateObject("roDateTime")
-      date.FromISO8601String(post.post_date)
-      item.date = date.GetYear().toStr() + "/" + date.GetMonth().toStr()
+        makers = post.filmmaker.split(" &amp; ")
+        if makers.Count() = 1 then
+          item.filmmaker = makers[0]
+        elseif makers.Count() = 2 then
+          item.filmmaker = Trim(makers[0]) + " & " + Trim(makers[1])
+        else
+          item.filmmaker = Trim(makers[0]) + " & " + (makers.Count() - 1).toStr() + " Others"
+        end if
+        date = CreateObject("roDateTime")
+        date.FromISO8601String(post.post_date)
+        item.date = date.GetYear().toStr() + "/" + date.GetMonth().toStr()
 
-      if post.genre.slug = "drama" then
-        altItem = m.rowData.drama.CreateChild("SimpleRowListItemData")
-        CopyFields(item, altItem)
-      else if post.genre.slug = "documentary" then
-        altItem = m.rowData.docs.CreateChild("SimpleRowListItemData")
-        CopyFields(item, altItem)
-      else if post.genre.slug = "comedy" then
-        altItem = m.rowData.comedy.CreateChild("SimpleRowListItemData")
-        CopyFields(item, altItem)
-      else if post.genre.slug = "sci-fi" then
-        altItem = m.rowData.scifi.CreateChild("SimpleRowListItemData")
-        CopyFields(item, altItem)
-      end if
+        categories = CreateObject("roList")
+        cats = post.categories.data
+        for j = 0 to cats.Count() - 1
+          categories.Push(cats[j].display_name)
+        end for
+        item.categories = categories.ToArray().Join(", ")
 
-      if post.style.slug = "animation" then
-        altItem = m.rowData.anim.CreateChild("SimpleRowListItemData")
-        CopyFields(item, altItem)
+        if post.genre.slug = "drama" then
+          altItem = m.rowData.drama.CreateChild("SimpleRowListItemData")
+          CopyFields(item, altItem)
+        else if post.genre.slug = "documentary" then
+          altItem = m.rowData.docs.CreateChild("SimpleRowListItemData")
+          CopyFields(item, altItem)
+        else if post.genre.slug = "comedy" then
+          altItem = m.rowData.comedy.CreateChild("SimpleRowListItemData")
+          CopyFields(item, altItem)
+        else if post.genre.slug = "sci-fi" then
+          altItem = m.rowData.scifi.CreateChild("SimpleRowListItemData")
+          CopyFields(item, altItem)
+        end if
+
+        if post.style.slug = "animation" then
+          altItem = m.rowData.anim.CreateChild("SimpleRowListItemData")
+          CopyFields(item, altItem)
+        end if
       end if
     end if
   end for
@@ -156,8 +172,10 @@ function onRowItemFocused() as void
 
   title = m.top.findNode("lblTitle")
   title.text = UCase(item.labelText)
-  if title.boundingRect()["height"] < 60 then
+  if title.boundingRect()["height"] < 75 then
     excerpt.maxLines = 4
+  else
+    excerpt.maxLines = 3
   end if
   excerpt.text = item.excerpt
   m.top.findNode("lblMature").visible = item.mature
@@ -167,6 +185,9 @@ function onRowItemFocused() as void
     poster.loadingBitmapUri = item.thumbnailUrl
   end if
   poster.uri = item.fullImgUrl
+
+  m.btnWatch.text = "Watch on " + item.service
+  m.top.findNode("lblTags").text = "Tags: " + item.categories
 end function
 
 sub onRowItemSelected()
@@ -205,22 +226,28 @@ sub setState(newState as string)
   txtContent = m.top.findNode("txtContent")
   lblExcerpt = m.top.findNode("lblExcerpt")
   lblTitle = m.top.findNode("lblTitle")
+  lblTags = m.top.findNode("lblTags")
 
   m.rowList.visible = (newState = "list")
   m.btnWatch.visible = (newState = "detail")
+  lblTags.visible = (newState = "detail")
 
   if newState = "detail" then
-    item = m.selectedItem
     lblExcerpt.maxLines = 6
-
+    lblExcerpt.font = "font:SmallSystemFont"
     m.btnWatch.setFocus(true)
   else if newState = "list" then
-
+    lblExcerpt.maxLines = 4
+    lblExcerpt.font = "font:SmallestSystemFont"
     m.rowList.setFocus(true)
   end if
   m.state = newState
 end sub
 
 sub onButtonSelected()
-  m.launch.vimeoId = m.selectedItem.vimeoId
+  if m.selectedItem.service = "Vimeo" then
+    m.launch.vimeoId = m.selectedItem.contentId
+  elseif m.selectedItem.service = "YouTube" then
+    m.launch.youTubeId = m.selectedItem.contentId
+  end if
 end sub

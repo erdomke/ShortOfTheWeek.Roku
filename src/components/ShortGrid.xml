@@ -17,10 +17,10 @@
         width="960" height="180"
         loadDisplayMode="scaleToFill"
         uri="pkg:/images/gradientVert.png" />
-      <LayoutGroup layoutDirection="vert" vertAlignment="top" itemSpacings="18" translation="[120,70]" >
+      <LayoutGroup layoutDirection="vert" vertAlignment="top" itemSpacings="[30,30,70,70]" translation="[120,70]" >
         <LayoutGroup layoutDirection="horiz" vertAlignment="top" itemSpacings="30" translation="[120,70]" >
           <Label id="lblSubTitle" horizAlign="left" translation="[0,0]">
-            <Font role = "font" uri = "pkg:/fonts/Slant.otf" size = "40" />
+            <Font role = "font" uri = "pkg:/fonts/Slant.otf" size = "44" />
           </Label>
           <Rectangle
             id="lblMature"
@@ -40,10 +40,18 @@
           <Font role = "font" uri = "pkg:/fonts/Futura.ttf" size = "56" />
         </Label>
         <Label id="lblExcerpt" horizAlign="left" translation="[0,0]" font="font:SmallestSystemFont"
-          width="900" wrap="true" maxLines="3" />
-        <Button id="btnWatch" text="Watch on Vimeo" visible="false" iconUri=""/>
+          width="880" wrap="true" maxLines="3" />
+        <Label id="lblTags" horizAlign="left" visible="false" translation="[0,0]" font="font:SmallestSystemFont"
+          width="880" wrap="true" maxLines="3">
+          <Font role="font" uri="pkg:/fonts/Slant.otf" size="44" />
+        </Label>
+        <Button id="btnWatch" text="Watch on Vimeo" visible="false" focusedIconUri="pkg:/images/playIcon.png"/>
       </LayoutGroup>
       <SimpleRowList id="theRowList" translation="[0,500]" />
+      <Poster translation="[1680,930]"
+        width="178" height="108"
+        loadDisplayMode="scaleToFit"
+        uri="pkg:/images/logo.png" />
     </Group>
   </children>
   <script type="text/brightscript" uri="pkg:/components/ShortGrid.brs" />

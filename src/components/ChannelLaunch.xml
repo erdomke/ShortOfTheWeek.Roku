@@ -4,6 +4,7 @@
 <component name="ChannelLaunch" extends="Task" >
   <interface>
     <field id="vimeoId" type="string" />
+    <field id="youTubeId" type="string" />
   </interface>
 
   <script type="text/brightscript" uri="pkg:/components/ChannelLaunch.brs"/>
