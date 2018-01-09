@@ -76,7 +76,7 @@ sub onJsonChanged()
         else
           item.fullImgUrl = "https:" + post.thumbnail
         end if
-        item.labelText = post.post_title
+        item.labelText = post.post_title.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&")
         item.duration = post.duration
         item.excerpt = post.post_excerpt
         item.mature = IsArray(post.labels)
